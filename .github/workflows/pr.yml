@@ -32,8 +32,8 @@ jobs:
         uses: nrwl/nx-set-shas@v2.0.2
 
       - run: npm i
-#      - run: npx nx-cloud start-ci-run
+      - run: npx nx-cloud start-ci-run
       - run: npx nx affected --target=build
       - run: npx nx affected --target=lint
-#      - run: npx nx-cloud stop-all-agents
+      - run: npx nx-cloud stop-all-agents
 
