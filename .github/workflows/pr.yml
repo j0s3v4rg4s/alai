@@ -5,18 +5,17 @@ name: Node.js CI
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
-env:
-  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+#env:
+#  NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.event.pull_request.head.ref }}
@@ -28,28 +27,46 @@ jobs:
           node-version: '14'
           cache: 'npm'
 
+      - name: Cache node modules
+        id: cache-nodemodules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2.0.2
 
-      - run: npm i
-      - run: npx nx-cloud start-ci-run
-      - run: npx nx affected --target=build --parallel --max-parallel=3
-      - run: npx nx affected --target=lint --parallel --max-parallel=3
-      - run: npx nx-cloud stop-all-agents
+      - name: Install Dependencies
+        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
+        run: npm i
 
-  agents:
-    runs-on: ubuntu-latest
-    name: Agent 1
-    timeout-minutes: 60
-    strategy:
-      matrix:
-        agent: [ 1, 2, 3 ]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-      - run: npm install
-      - name: Start Nx Agent ${{ matrix.agent }}
-        run: npx nx-cloud start-agent
+      - run: npx nx affected --target=build
+      - run: npx nx affected --target=lint
+#      - run: npx nx-cloud start-ci-run
+#      - run: npx nx affected --target=build --parallel --max-parallel=3
+#      - run: npx nx affected --target=lint --parallel --max-parallel=3
+#      - run: npx nx-cloud stop-all-agents
+
+#  agents:
+#    runs-on: ubuntu-latest
+#    name: Agent 1
+#    timeout-minutes: 60
+#    strategy:
+#      matrix:
+#        agent: [ 1, 2, 3 ]
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v1
+#        with:
+#          node-version: '14'
+#      - run: npm install
+#      - name: Start Nx Agent ${{ matrix.agent }}
+#        run: npx nx-cloud start-agent
 
