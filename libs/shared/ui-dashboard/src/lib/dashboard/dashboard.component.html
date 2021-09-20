@@ -1,0 +1,16 @@
+<div class="relative flex h-screen flex-col sm:flex-row">
+  <!--  mobile menu bar-->
+  <alai-toolbar class="sm:hidden" (toggleMenu)='sidebar.toggle()'>
+    <ng-content select="[toolbar]"></ng-content>
+  </alai-toolbar>
+
+  <!--  sidebar-->
+  <alai-sidebar #sidebar>
+    <ng-content select='[menu]'></ng-content>
+  </alai-sidebar>
+
+  <!--  content-->
+  <div class="p-10 flex-1 overflow-scroll">
+    <ng-content select='[content]'></ng-content>
+  </div>
+</div>

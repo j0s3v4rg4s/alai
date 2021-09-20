@@ -10,7 +10,9 @@
           "error",
           {
             "enforceBuildableLibDependency": true,
-            "allow": [],
+            "allow": [
+              "@alai/restaurant/ui-nav"
+            ],
             "depConstraints": [
               {
                 "sourceTag": "*",

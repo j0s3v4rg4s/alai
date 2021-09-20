@@ -1,0 +1,5 @@
+@layer components {
+  .option {
+    @apply block transition-colors hover:text-gray-500 hover:bg-pink-300 rounded py-2 px-4
+  }
+}

@@ -14,12 +14,7 @@
     "default": {
       "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
         "accessToken": "NTcwMGYxMGItOTU2Ny00N2FmLWFlOTktZmFjMDk0YTQzZTdkfHJlYWQtd3JpdGU="
       }
     }
@@ -33,14 +28,25 @@
     ]
   },
   "projects": {
+    "admin": {
+      "tags": []
+    },
+    "admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["admin"]
+    },
     "restaurant": {
       "tags": []
     },
     "restaurant-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "restaurant"
-      ]
+      "implicitDependencies": ["restaurant"]
+    },
+    "restaurant-ui-nav": {
+      "tags": []
+    },
+    "shared-ui-dashboard": {
+      "tags": []
     }
   }
 }

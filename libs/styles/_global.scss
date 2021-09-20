@@ -1,0 +1,28 @@
+@use '~@angular/material' as mat;
+@include mat.core();
+
+$restaurant-primary: mat.define-palette(mat.$indigo-palette);
+$restaurant-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$restaurant-warn: mat.define-palette(mat.$red-palette);
+
+$restaurant-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $restaurant-primary,
+        accent: $restaurant-accent,
+        warn: $restaurant-warn,
+      ),
+    )
+);
+
+//@include mat.all-component-themes($restaurant-theme);
+@include mat.input-theme($restaurant-theme);
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
