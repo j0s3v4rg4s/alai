@@ -16,6 +16,14 @@ module.exports = {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },
+      colors: {
+        blueLight: {
+          light: '#69DCD4',
+          DEFAULT: '#69DCD4',
+          dark: '#5abdb6',
+        },
+        blueDark: '#375FEC'
+      },
     },
   },
   variants: {

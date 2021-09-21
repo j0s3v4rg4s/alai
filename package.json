@@ -8,7 +8,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "serve:restaurant": "ng run restaurant:serve"
+    "serve:restaurant": "ng run restaurant:serve",
+    "serve:admin": "ng run admin:serve"
   },
   "private": true,
   "dependencies": {

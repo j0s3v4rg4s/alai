@@ -1,0 +1,21 @@
+@layer components {
+  .inp {
+    @apply rounded-md
+    bg-gray-100
+    border-transparent
+    focus:ring-blueLight focus:ring-opacity-30 focus:ring-4 focus:border-blueLight focus:bg-white
+    hover:border-blueLight
+  }
+
+  .ng-invalid.ng-touched {
+    @apply border-red-500 focus:border-blueLight
+  }
+
+  .btn {
+    @apply rounded-md px-6 py-2 uppercase outline-none
+  }
+
+  .btn-primary {
+    @apply bg-blueLight text-white hover:bg-blueLight-dark focus-within:ring-4 focus-within:ring-blueLight focus-within:ring-opacity-40
+  }
+}

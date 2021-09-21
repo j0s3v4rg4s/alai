@@ -17,7 +17,15 @@
             "polyfills": "apps/admin/src/polyfills.ts",
             "tsConfig": "apps/admin/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets", "libs/asse"],
+            "assets": [
+              "apps/admin/src/favicon.ico",
+              "apps/admin/src/assets",
+              {
+                "glob": "*",
+                "input": "libs/assets",
+                "output": "assets"
+              }
+            ],
             "styles": ["apps/admin/src/styles.scss"],
             "scripts": [],
             "stylePreprocessorOptions": {
@@ -252,6 +260,31 @@
             "lintFilePatterns": [
               "libs/restaurant/ui-nav/src/**/*.ts",
               "libs/restaurant/ui-nav/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
+    "shared-feature-login": {
+      "projectType": "library",
+      "root": "libs/shared/feature-login",
+      "sourceRoot": "libs/shared/feature-login/src",
+      "prefix": "alai",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/feature-login"],
+          "options": {
+            "jestConfig": "libs/shared/feature-login/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shared/feature-login/src/**/*.ts",
+              "libs/shared/feature-login/src/**/*.html"
             ]
           }
         }

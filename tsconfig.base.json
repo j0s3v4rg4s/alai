@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@alai/restaurant/ui-nav": ["libs/restaurant/ui-nav/src/index.ts"],
+      "@alai/shared/feature-login": ["libs/shared/feature-login/src/index.ts"],
       "@alai/shared/ui-dashboard": ["libs/shared/ui-dashboard/src/index.ts"]
     }
   },
