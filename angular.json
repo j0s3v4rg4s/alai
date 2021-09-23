@@ -9,7 +9,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/admin",
             "index": "apps/admin/src/index.html",
@@ -26,10 +28,14 @@
                 "output": "assets"
               }
             ],
-            "styles": ["apps/admin/src/styles.scss"],
+            "styles": [
+              "apps/admin/src/styles.scss"
+            ],
             "scripts": [],
             "stylePreprocessorOptions": {
-              "includePaths": ["./libs/styles"]
+              "includePaths": [
+                "./libs/styles"
+              ]
             }
           },
           "configurations": {
@@ -94,7 +100,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/admin"],
+          "outputs": [
+            "coverage/apps/admin"
+          ],
           "options": {
             "jestConfig": "apps/admin/jest.config.js",
             "passWithNoTests": true
@@ -121,9 +129,13 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/admin-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/admin-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -136,7 +148,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/restaurant",
             "index": "apps/restaurant/src/index.html",
@@ -148,7 +162,9 @@
               "apps/restaurant/src/favicon.ico",
               "apps/restaurant/src/assets"
             ],
-            "styles": ["apps/restaurant/src/styles.scss"],
+            "styles": [
+              "apps/restaurant/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -213,11 +229,17 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/restaurant"],
+          "outputs": [
+            "coverage/apps/restaurant"
+          ],
           "options": {
             "jestConfig": "apps/restaurant/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -241,9 +263,13 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/restaurant-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/restaurant-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -273,7 +299,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/feature-login"],
+          "outputs": [
+            "coverage/libs/shared/feature-login"
+          ],
           "options": {
             "jestConfig": "libs/shared/feature-login/jest.config.js",
             "passWithNoTests": true
@@ -298,7 +326,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/shared/ui-dashboard"],
+          "outputs": [
+            "coverage/libs/shared/ui-dashboard"
+          ],
           "options": {
             "jestConfig": "libs/shared/ui-dashboard/jest.config.js",
             "passWithNoTests": true

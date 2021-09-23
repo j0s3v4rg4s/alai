@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatRippleModule } from '@angular/material/core';
 
-const route: Routes = [{ path: '', component: LoginComponent }];
+import { LoginFormComponent } from './login/login-form.component';
 
 @NgModule({
-    imports: [CommonModule, RouterModule.forChild(route), ReactiveFormsModule],
-    declarations: [LoginComponent],
+    imports: [CommonModule, ReactiveFormsModule, MatRippleModule],
+    declarations: [LoginFormComponent],
+    exports: [LoginFormComponent],
 })
 export class FeatureLoginModule {}

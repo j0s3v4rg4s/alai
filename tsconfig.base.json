@@ -1,24 +1,25 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": false,
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es2017", "dom"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "baseUrl": ".",
-    "paths": {
-      "@alai/restaurant/ui-nav": ["libs/restaurant/ui-nav/src/index.ts"],
-      "@alai/shared/feature-login": ["libs/shared/feature-login/src/index.ts"],
-      "@alai/shared/ui-dashboard": ["libs/shared/ui-dashboard/src/index.ts"]
-    }
-  },
-  "exclude": ["node_modules", "tmp"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "@alai/restaurant/ui-nav": ["libs/restaurant/ui-nav/src/index.ts"],
+            "@alai/shared/feature-login": ["libs/shared/feature-login/src/index.ts"],
+            "@alai/shared/ui-dashboard": ["libs/shared/ui-dashboard/src/index.ts"],
+            "admin/*": ["apps/admin/src/*"]
+        }
+    },
+    "exclude": ["node_modules", "tmp"]
 }

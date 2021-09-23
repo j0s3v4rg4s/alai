@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "qa": "alai-dev-3177f",
+    "default": "alai-dev-3177f"
+  },
+  "targets": {
+    "alai-dev-3177f": {
+      "hosting": {
+        "restaurant": [
+          "alai-dev-3177f"
+        ]
+      }
+    }
+  }
+}

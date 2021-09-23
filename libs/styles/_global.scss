@@ -15,8 +15,9 @@ $restaurant-theme: mat.define-light-theme(
     )
 );
 
+//@include mat.core-theme($restaurant-theme);
 //@include mat.all-component-themes($restaurant-theme);
-@include mat.input-theme($restaurant-theme);
+@include mat.ripple-theme($restaurant-theme);
 
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
