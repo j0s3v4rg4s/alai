@@ -39,5 +39,6 @@ testem.log
 Thumbs.db
 
 .firebase
-
+fireBack
 *.log
+
