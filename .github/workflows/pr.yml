@@ -49,8 +49,8 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: npm i
 
-      - run: npx nx affected --target=build
-      - run: npx nx affected --target=lint
+      - run: NODE_ENV=production npx nx affected --target=build
+      - run: NODE_ENV=production npx nx affected --target=lint
 #      - run: npx nx-cloud start-ci-run
 #      - run: npx nx affected --target=build --parallel --max-parallel=3
 #      - run: npx nx affected --target=lint --parallel --max-parallel=3
