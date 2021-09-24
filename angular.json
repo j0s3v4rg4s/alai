@@ -1,384 +1,395 @@
 {
-  "version": 1,
-  "projects": {
-    "admin": {
-      "projectType": "application",
-      "root": "apps/admin",
-      "sourceRoot": "apps/admin/src",
-      "prefix": "alai",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/admin",
-            "index": "apps/admin/src/index.html",
-            "main": "apps/admin/src/main.ts",
-            "polyfills": "apps/admin/src/polyfills.ts",
-            "tsConfig": "apps/admin/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/admin/src/favicon.ico",
-              "apps/admin/src/assets",
-              {
-                "glob": "*",
-                "input": "libs/assets",
-                "output": "assets"
-              }
-            ],
-            "styles": [
-              "apps/admin/src/styles.scss"
-            ],
-            "scripts": [],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "./libs/styles"
-              ]
-            }
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+    "version": 1,
+    "projects": {
+        "admin": {
+            "projectType": "application",
+            "root": "apps/admin",
+            "sourceRoot": "apps/admin/src",
+            "prefix": "alai",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "outputs": ["{options.outputPath}"],
+                    "options": {
+                        "outputPath": "dist/apps/admin",
+                        "index": "apps/admin/src/index.html",
+                        "main": "apps/admin/src/main.ts",
+                        "polyfills": "apps/admin/src/polyfills.ts",
+                        "tsConfig": "apps/admin/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            "apps/admin/src/favicon.ico",
+                            "apps/admin/src/assets",
+                            {
+                                "glob": "*",
+                                "input": "libs/assets",
+                                "output": "assets"
+                            }
+                        ],
+                        "styles": ["apps/admin/src/styles.scss"],
+                        "scripts": [],
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["./libs/styles"]
+                        }
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/admin/src/environments/environment.ts",
+                                    "with": "apps/admin/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/admin/src/environments/environment.ts",
-                  "with": "apps/admin/src/environments/environment.prod.ts"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "admin:build:production"
-            },
-            "development": {
-              "browserTarget": "admin:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "admin:build"
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/admin/src/**/*.ts",
-              "apps/admin/src/**/*.html"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/admin"
-          ],
-          "options": {
-            "jestConfig": "apps/admin/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "admin-e2e": {
-      "root": "apps/admin-e2e",
-      "sourceRoot": "apps/admin-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/admin-e2e/cypress.json",
-            "devServerTarget": "admin:serve:development"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "admin:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "options": {
-            "lintFilePatterns": [
-              "apps/admin-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "restaurant": {
-      "projectType": "application",
-      "root": "apps/restaurant",
-      "sourceRoot": "apps/restaurant/src",
-      "prefix": "alai",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/restaurant",
-            "index": "apps/restaurant/src/index.html",
-            "main": "apps/restaurant/src/main.ts",
-            "polyfills": "apps/restaurant/src/polyfills.ts",
-            "tsConfig": "apps/restaurant/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "apps/restaurant/src/favicon.ico",
-              "apps/restaurant/src/assets"
-            ],
-            "styles": [
-              "apps/restaurant/src/styles.scss"
-            ],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "admin:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "admin:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
                 },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "admin:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["apps/admin/src/**/*.ts", "apps/admin/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/apps/admin"],
+                    "options": {
+                        "jestConfig": "apps/admin/jest.config.js",
+                        "passWithNoTests": true
+                    }
                 }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "apps/restaurant/src/environments/environment.ts",
-                  "with": "apps/restaurant/src/environments/environment.prod.ts"
+            }
+        },
+        "admin-e2e": {
+            "root": "apps/admin-e2e",
+            "sourceRoot": "apps/admin-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/admin-e2e/cypress.json",
+                        "devServerTarget": "admin:serve:development"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "admin:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "outputs": ["{options.outputFile}"],
+                    "options": {
+                        "lintFilePatterns": ["apps/admin-e2e/**/*.{js,ts}"]
+                    }
                 }
-              ],
-              "outputHashing": "all"
+            }
+        },
+        "restaurant": {
+            "projectType": "application",
+            "root": "apps/restaurant",
+            "sourceRoot": "apps/restaurant/src",
+            "prefix": "alai",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "outputs": ["{options.outputPath}"],
+                    "options": {
+                        "outputPath": "dist/apps/restaurant",
+                        "index": "apps/restaurant/src/index.html",
+                        "main": "apps/restaurant/src/main.ts",
+                        "polyfills": "apps/restaurant/src/polyfills.ts",
+                        "tsConfig": "apps/restaurant/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": ["apps/restaurant/src/favicon.ico", "apps/restaurant/src/assets"],
+                        "styles": ["apps/restaurant/src/styles.scss"],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kb",
+                                    "maximumError": "1mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "2kb",
+                                    "maximumError": "4kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/restaurant/src/environments/environment.ts",
+                                    "with": "apps/restaurant/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "buildOptimizer": false,
+                            "optimization": false,
+                            "vendorChunk": true,
+                            "extractLicenses": false,
+                            "sourceMap": true,
+                            "namedChunks": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "restaurant:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "restaurant:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "restaurant:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["apps/restaurant/src/**/*.ts", "apps/restaurant/src/**/*.html"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/apps/restaurant"],
+                    "options": {
+                        "jestConfig": "apps/restaurant/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "deploy": {
+                    "builder": "@angular/fire:deploy",
+                    "options": {}
+                }
+            }
+        },
+        "restaurant-e2e": {
+            "root": "apps/restaurant-e2e",
+            "sourceRoot": "apps/restaurant-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/restaurant-e2e/cypress.json",
+                        "devServerTarget": "restaurant:serve:development",
+                        "tsConfig": "apps/restaurant-e2e/tsconfig.json"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "restaurant:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "outputs": ["{options.outputFile}"],
+                    "options": {
+                        "lintFilePatterns": ["apps/restaurant-e2e/**/*.{js,ts}"]
+                    }
+                }
+            }
+        },
+        "restaurant-ui-nav": {
+            "projectType": "library",
+            "root": "libs/restaurant/ui-nav",
+            "sourceRoot": "libs/restaurant/ui-nav/src",
+            "prefix": "alai",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/restaurant/ui-nav/src/**/*.ts",
+                            "libs/restaurant/ui-nav/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "shared-feature-login": {
+            "projectType": "library",
+            "root": "libs/shared/feature-login",
+            "sourceRoot": "libs/shared/feature-login/src",
+            "prefix": "alai",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/feature-login"],
+                    "options": {
+                        "jestConfig": "libs/shared/feature-login/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/shared/feature-login/src/**/*.ts",
+                            "libs/shared/feature-login/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "shared-ui-dashboard": {
+            "projectType": "library",
+            "root": "libs/shared/ui-dashboard",
+            "sourceRoot": "libs/shared/ui-dashboard/src",
+            "prefix": "alai",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/ui-dashboard"],
+                    "options": {
+                        "jestConfig": "libs/shared/ui-dashboard/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/shared/ui-dashboard/src/**/*.ts",
+                            "libs/shared/ui-dashboard/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "shared-ui-general": {
+            "projectType": "library",
+            "root": "libs/shared/ui-general",
+            "sourceRoot": "libs/shared/ui-general/src",
+            "prefix": "alai",
+            "architect": {
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/ui-general"],
+                    "options": {
+                        "jestConfig": "libs/shared/ui-general/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                },
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": [
+                            "libs/shared/ui-general/src/**/*.ts",
+                            "libs/shared/ui-general/src/**/*.html"
+                        ]
+                    }
+                }
+            }
+        },
+        "shared-utility": {
+            "root": "libs/shared/utility",
+            "sourceRoot": "libs/shared/utility/src",
+            "projectType": "library",
+            "architect": {
+                "lint": {
+                    "builder": "@nrwl/linter:eslint",
+                    "options": {
+                        "lintFilePatterns": ["libs/shared/utility/**/*.ts"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "outputs": ["coverage/libs/shared/utility"],
+                    "options": {
+                        "jestConfig": "libs/shared/utility/jest.config.js",
+                        "passWithNoTests": true
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "defaultCollection": "@nrwl/angular",
+        "packageManager": "npm"
+    },
+    "schematics": {
+        "@nrwl/angular": {
+            "application": {
+                "linter": "eslint"
             },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "vendorChunk": true,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "browserTarget": "restaurant:build:production"
+            "library": {
+                "linter": "eslint"
             },
-            "development": {
-              "browserTarget": "restaurant:build:development"
+            "storybook-configuration": {
+                "linter": "eslint"
             }
-          },
-          "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "restaurant:build"
-          }
+        "@nrwl/angular:application": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
         },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/restaurant/src/**/*.ts",
-              "apps/restaurant/src/**/*.html"
-            ]
-          }
+        "@nrwl/angular:library": {
+            "style": "scss",
+            "linter": "eslint",
+            "unitTestRunner": "jest"
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/restaurant"
-          ],
-          "options": {
-            "jestConfig": "apps/restaurant/jest.config.js",
-            "passWithNoTests": true
-          }
+        "@schematics/angular:component": {
+            "style": "scss"
         },
-        "deploy": {
-          "builder": "@angular/fire:deploy",
-          "options": {}
+        "@nrwl/angular:component": {
+            "style": "scss"
         }
-      }
     },
-    "restaurant-e2e": {
-      "root": "apps/restaurant-e2e",
-      "sourceRoot": "apps/restaurant-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/restaurant-e2e/cypress.json",
-            "devServerTarget": "restaurant:serve:development",
-            "tsConfig": "apps/restaurant-e2e/tsconfig.json"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "restaurant:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "options": {
-            "lintFilePatterns": [
-              "apps/restaurant-e2e/**/*.{js,ts}"
-            ]
-          }
-        }
-      }
-    },
-    "restaurant-ui-nav": {
-      "projectType": "library",
-      "root": "libs/restaurant/ui-nav",
-      "sourceRoot": "libs/restaurant/ui-nav/src",
-      "prefix": "alai",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/restaurant/ui-nav/src/**/*.ts",
-              "libs/restaurant/ui-nav/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "shared-feature-login": {
-      "projectType": "library",
-      "root": "libs/shared/feature-login",
-      "sourceRoot": "libs/shared/feature-login/src",
-      "prefix": "alai",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/feature-login"
-          ],
-          "options": {
-            "jestConfig": "libs/shared/feature-login/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/feature-login/src/**/*.ts",
-              "libs/shared/feature-login/src/**/*.html"
-            ]
-          }
-        }
-      }
-    },
-    "shared-ui-dashboard": {
-      "projectType": "library",
-      "root": "libs/shared/ui-dashboard",
-      "sourceRoot": "libs/shared/ui-dashboard/src",
-      "prefix": "alai",
-      "architect": {
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/shared/ui-dashboard"
-          ],
-          "options": {
-            "jestConfig": "libs/shared/ui-dashboard/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/shared/ui-dashboard/src/**/*.ts",
-              "libs/shared/ui-dashboard/src/**/*.html"
-            ]
-          }
-        }
-      }
-    }
-  },
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "npm"
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "scss",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@schematics/angular:component": {
-      "style": "scss"
-    },
-    "@nrwl/angular:component": {
-      "style": "scss"
-    }
-  },
-  "defaultProject": "restaurant"
+    "defaultProject": "restaurant"
 }

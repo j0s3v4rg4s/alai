@@ -1,55 +1,61 @@
 {
-  "npmScope": "alai",
-  "affected": {
-    "defaultBase": "main"
-  },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
+    "npmScope": "alai",
+    "affected": {
+        "defaultBase": "main"
     },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "NTcwMGYxMGItOTU2Ny00N2FmLWFlOTktZmFjMDk0YTQzZTdkfHJlYWQtd3JpdGU="
-      }
+    "implicitDependencies": {
+        "package.json": {
+            "dependencies": "*",
+            "devDependencies": "*"
+        },
+        ".eslintrc.json": "*"
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"],
+                "accessToken": "NTcwMGYxMGItOTU2Ny00N2FmLWFlOTktZmFjMDk0YTQzZTdkfHJlYWQtd3JpdGU="
+            }
+        }
+    },
+    "targetDependencies": {
+        "build": [
+            {
+                "target": "build",
+                "projects": "dependencies"
+            }
+        ]
+    },
+    "projects": {
+        "admin": {
+            "tags": []
+        },
+        "admin-e2e": {
+            "tags": [],
+            "implicitDependencies": ["admin"]
+        },
+        "restaurant": {
+            "tags": []
+        },
+        "restaurant-e2e": {
+            "tags": [],
+            "implicitDependencies": ["restaurant"]
+        },
+        "restaurant-ui-nav": {
+            "tags": []
+        },
+        "shared-feature-login": {
+            "tags": []
+        },
+        "shared-ui-dashboard": {
+            "tags": []
+        },
+        "shared-ui-general": {
+            "tags": []
+        },
+        "shared-utility": {
+            "tags": []
+        }
     }
-  },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
-  "projects": {
-    "admin": {
-      "tags": []
-    },
-    "admin-e2e": {
-      "tags": [],
-      "implicitDependencies": ["admin"]
-    },
-    "restaurant": {
-      "tags": []
-    },
-    "restaurant-e2e": {
-      "tags": [],
-      "implicitDependencies": ["restaurant"]
-    },
-    "restaurant-ui-nav": {
-      "tags": []
-    },
-    "shared-feature-login": {
-      "tags": []
-    },
-    "shared-ui-dashboard": {
-      "tags": []
-    }
-  }
 }

@@ -20,7 +20,7 @@ import { environment } from '../environments/environment';
         provideAuth(() => {
             const auth = getAuth();
             if (environment.useEmulator) {
-                connectAuthEmulator(auth, '');
+                connectAuthEmulator(auth, 'http://localhost:9099/');
             }
             return auth;
         }),
