@@ -4,6 +4,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth, getAuth, connectAuthEmulator } from '@angular/fire/auth';
 
 import { FeatureLoginModule } from '@alai/shared/feature-login';
+import { UiDashboardModule } from '@alai/shared/ui-dashboard';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { environment } from '../environments/environment';
     imports: [
         BrowserModule,
         FeatureLoginModule,
+        UiDashboardModule,
         AppRoutingModule,
         provideFirebaseApp(() => initializeApp(environment.fire)),
         provideAuth(() => {

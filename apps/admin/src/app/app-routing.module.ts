@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 
 const routers: Routes = [
-    {path: 'login', component: LoginComponent}
+    { path: 'login', component: LoginComponent },
+    { path: 'home', loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule) },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

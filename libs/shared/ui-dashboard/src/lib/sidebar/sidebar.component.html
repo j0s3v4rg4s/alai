@@ -1,41 +1,25 @@
-<div *ngIf='isOpen' class='top-0 bg-black absolute w-screen h-screen opacity-20 sm:hidden'></div>
+<div *ngIf="isOpen" class="top-0 bg-black absolute w-screen h-screen opacity-20 sm:hidden"></div>
 
 <div
-  class="
-    min-h-full
-    bg-pink-500
-    text-pink-100
-    w-64
-    p-4
-    space-y-5
-    inset-y-0
-    left-0
-    absolute
-    transform
-    -translate-x-full
-    transition
-    duration-200
-    ease-in-out
-    sm:relative sm:translate-x-0
-  "
-  #root
+    class="
+        min-h-full
+        bg-blue-500
+        text-pink-100
+        w-64
+        p-4
+        space-y-5
+        inset-y-0
+        left-0
+        absolute
+        transform
+        -translate-x-full
+        transition
+        duration-200
+        ease-in-out
+        sm:relative sm:translate-x-0
+    "
+    #root
 >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-10 w-10 mx-auto"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-    />
-  </svg>
-
-  <ng-content></ng-content>
+    <img src="assets/alai_white.svg" alt="logo" class="w-48 mx-auto">
+    <ng-content></ng-content>
 </div>
-
-
