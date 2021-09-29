@@ -4,10 +4,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { OptionComponent } from './option/option.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [DashboardComponent, ToolbarComponent, SidebarComponent, OptionComponent],
-  exports: [DashboardComponent, ToolbarComponent, SidebarComponent, OptionComponent],
+    imports: [CommonModule, RouterModule],
+    declarations: [DashboardComponent, ToolbarComponent, SidebarComponent, OptionComponent],
+    exports: [DashboardComponent, ToolbarComponent, SidebarComponent, OptionComponent],
 })
 export class UiDashboardModule {}

@@ -5,8 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 
 const routers: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'home', loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule) },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule) },
+    { path: '', redirectTo: '/dashboard/commerce', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,5 +1,38 @@
 @layer components {
     .option {
-        @apply block transition-colors hover:text-gray-700 hover:bg-blue-300 rounded py-2 px-4
+        @apply text-indigo-50
+                block
+                transition-colors
+                py-3 px-4
+                relative
+                rounded-l-3xl
+                hover:bg-indigo-400
+                hover:text-gray-700;
+    }
+
+    .active {
+        @apply bg-white text-indigo-500 rounded-l-full hover:text-indigo-500 hover:bg-white;
+        &::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 24px;
+            right: 0;
+            border-bottom-right-radius: 25px;
+            top: -24px;
+            box-shadow: 0 12px 0 0 #fff;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 24px;
+            right: 0;
+            border-top-right-radius: 25px;
+            bottom: -24px;
+            box-shadow: 0 -12px 0 0 #fff;
+            z-index: 1;
+        }
     }
 }
